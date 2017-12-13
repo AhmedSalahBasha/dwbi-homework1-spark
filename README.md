@@ -10,3 +10,5 @@ Exercise 1:
 - Connect a Column Filter node to the new Row Filter node and exclude all columns except for the column marital-status and education.
 - Connect a Groupby node after the new Column Filter and group by marital-status; use count as the aggregation method on another column.
 - Join the aggregated values to the output data table of the Column Filter node. Use marital-status as the join column.
+
+Exercise from here: https://www.knime.com/knime-online-self-training-lesson-3
