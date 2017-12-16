@@ -1,9 +1,10 @@
-import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.sql.{SQLContext, SparkSession}
-import org.apache.spark.sql.functions._
-import org.apache.spark.ml.feature.Imputer
+package Task_2
 
-object MissingValues {
+import org.apache.spark.ml.feature.Imputer
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+
+object TS_MissingValues {
 
   def main(args: Array[String]) {
 
@@ -24,6 +25,33 @@ object MissingValues {
       .format("csv")
       .load(file)
 
+
+    // -------------  Question 1.A  ------------
+    df.columns.foreach { x =>
+      val minValue = df.agg(min(x)).first()
+      print("Minimum Value For: >> "+x, minValue)
+    }
+
+    df.columns.foreach { x =>
+      val maxValue = df.agg(max(x)).first()
+      print("Maximum Value For: >> "+x, maxValue)
+    }
+
+    df.columns.foreach { x =>
+      val avgValue = df.agg(avg(x)).first()
+      print("Average Value For: >> "+x, avgValue)
+    }
+
+    df.columns.foreach { x =>
+      val meanValue = df.agg(mean(x)).first()
+      print("Median Value For: >> "+x, meanValue)
+    }
+
+    df.columns.foreach { x =>
+      val distinctValue = df.groupBy(x).count().show()
+      print("Distinct Value For: >> "+x, distinctValue)
+    }
+    // -----------------------------------------
 
     // -------------  Question 2.A  ------------
     val cols = Array("Temp with missings")
