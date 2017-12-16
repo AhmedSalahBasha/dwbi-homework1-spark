@@ -55,5 +55,13 @@ object Exercise1 {
     println("====================================")
 
 
+
+    println("===============  Question ( C )  =====================")
+    df_SFS.groupBy("marital-status").count()
+    println("*********** Question ( C ) | exclude all columns except for the column marital-status and education *************** ")
+    println("====================================")
+
+
+
   }
 }
