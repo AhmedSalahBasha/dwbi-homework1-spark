@@ -3,7 +3,7 @@ package Task_1
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{avg, max, mean, min}
 
-object SimpleFlowWithStatistics {
+object Task1 {
 
   def main(args: Array[String]) {
 
@@ -17,6 +17,8 @@ object SimpleFlowWithStatistics {
       .getOrCreate
 
     val SimpleFlowWithStatistics = "data/SimpleFlow_with_Statistics.csv"
+    val CollectionCookbook = "data/CollectionCookbook.csv"
+    val StandardPreprocessing = "data/StandardPreprocessing.csv"
 
     // read SimpleFlow_with_Statistics.csv
     val df_SFS = spark.read
@@ -25,9 +27,23 @@ object SimpleFlowWithStatistics {
       .format("csv")
       .load(SimpleFlowWithStatistics)
 
+    // read CollectionCookbook.csv
+    val df_CC = spark.read
+      .option("header", "true") //reading the headers
+      .option("inferSchema", true)
+      .format("csv")
+      .load(CollectionCookbook)
+
+    // read StandardPreprocessing.csv
+    val df_SP = spark.read
+      .option("header", "true") //reading the headers
+      .option("inferSchema", true)
+      .format("csv")
+      .load(StandardPreprocessing)
 
 
-    // -------------  Question 1.A  ------------
+
+    // -------------  Question 1.A  [Simple_Flow_with_Statistics]------------
     df_SFS.columns.foreach { x =>
       val minValue = df_SFS.agg(min(x)).first()
       print("Minimum Value For: >> "+x, minValue)
@@ -50,6 +66,60 @@ object SimpleFlowWithStatistics {
 
     df_SFS.columns.foreach { x =>
       val distinctValue = df_SFS.groupBy(x).count().show()
+      print("Distinct Value For: >> "+x, distinctValue)
+    }
+    // -----------------------------------------
+
+    // -------------  Question 1.A  [CollectionCookbook]------------
+    df_CC.columns.foreach { x =>
+      val minValue = df_CC.agg(min(x)).first()
+      print("Minimum Value For: >> "+x, minValue)
+    }
+
+    df_CC.columns.foreach { x =>
+      val maxValue = df_CC.agg(max(x)).first()
+      print("Maximum Value For: >> "+x, maxValue)
+    }
+
+    df_CC.columns.foreach { x =>
+      val avgValue = df_CC.agg(avg(x)).first()
+      print("Average Value For: >> "+x, avgValue)
+    }
+
+    df_CC.columns.foreach { x =>
+      val meanValue = df_CC.agg(mean(x)).first()
+      print("Median Value For: >> "+x, meanValue)
+    }
+
+    df_CC.columns.foreach { x =>
+      val distinctValue = df_CC.groupBy(x).count().show()
+      print("Distinct Value For: >> "+x, distinctValue)
+    }
+    // -----------------------------------------
+
+    // -------------  Question 1.A  [StandardPreprocessing]------------
+    df_SP.columns.foreach { x =>
+      val minValue = df_SP.agg(min(x)).first()
+      print("Minimum Value For: >> "+x, minValue)
+    }
+
+    df_SP.columns.foreach { x =>
+      val maxValue = df_SP.agg(max(x)).first()
+      print("Maximum Value For: >> "+x, maxValue)
+    }
+
+    df_SP.columns.foreach { x =>
+      val avgValue = df_SP.agg(avg(x)).first()
+      print("Average Value For: >> "+x, avgValue)
+    }
+
+    df_SP.columns.foreach { x =>
+      val meanValue = df_SP.agg(mean(x)).first()
+      print("Median Value For: >> "+x, meanValue)
+    }
+
+    df_SP.columns.foreach { x =>
+      val distinctValue = df_SP.groupBy(x).count().show()
       print("Distinct Value For: >> "+x, distinctValue)
     }
     // -----------------------------------------
