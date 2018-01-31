@@ -7,10 +7,6 @@ import org.apache.spark.sql.functions.{mean, var_pop}
 object HW4_Task1_3 {
 
 
-    /*
-    * Credits to Andres Ardila
-    * Github --> https://github.com/aardila
-    */
   def main(args: Array[String]) {
 
     // reset spark-warehouse directory

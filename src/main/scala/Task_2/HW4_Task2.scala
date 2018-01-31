@@ -6,6 +6,14 @@ import org.apache.spark.sql.types.{DataType, DoubleType, IntegerType}
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
 
+
+
+    /*
+    * Credits to Andres Ardila
+    * Github --> https://github.com/aardila
+    */
+
+
 case class T2NumericColumnStats(
                                  colName: String,
                                  min: Double,
