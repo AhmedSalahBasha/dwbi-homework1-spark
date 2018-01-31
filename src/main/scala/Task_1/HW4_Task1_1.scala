@@ -11,6 +11,11 @@ object HW4_Task1_1 {
 
   def main(args: Array[String]) {
 
+    /*
+    * Credits to Andres Ardila
+    * Github --> https://github.com/aardila
+    */
+
     // reset spark-warehouse directory
     System.setProperty("hadoop.home.dir", "c:/winutils/")
     System.setProperty("spark.sql.warehouse.dir", "file:///C:/spark-warehouse")
