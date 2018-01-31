@@ -4,7 +4,7 @@
 		module="spark-test_2.11"
 		revision="0.1"
 		status="integration"
-		publication="20171216113927"
+		publication="20171223114243"
 	>
 		<description>
 		spark-test
@@ -35,5 +35,6 @@
 		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.2.0" conf="compile->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.2.0" conf="compile->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-mllib_2.11" rev="2.2.0" conf="compile->default(compile)"/>
+		<dependency org="com.crealytics" name="spark-excel_2.11" rev="0.8.3" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
